@@ -1,4 +1,4 @@
-h1,p{
+ h1,p{
     text-align:center
 }
 h1 {
@@ -10,16 +10,51 @@ p{
     color: white;
     padding-right: 15px;
     padding-left: 15px;
+
 }
 body {
     background-color: rgb(28, 28, 61);
     width: 350px;
     height: 550px;
-}
+} 
+
 main {
     display: flex;
     flex-flow: column;
 }
+.add {
+    font-size: 3em;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 4px 13px 4px 13px;
+    background-color: white;
+    color: rgb(28, 28, 61);
+    border-radius: 10px;
+} 
+.add:hover {
+    background-color: rgb(72, 180, 207);
+    color: white;
+    cursor: grab;
+}
+
+.champs {
+    display: none;
+}
+
+.valid {
+    background-color: rgb(28, 28, 61);
+    font-size: 2em;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: auto;
+    border: none;
+} 
+.valid:hover {
+    cursor: grab;
+}
+
 .liste {
     margin: auto;
     border: solid rgb(62, 62, 121);
@@ -28,13 +63,62 @@ main {
     height: 330px;
     width: 250px;
 }
-button {
-    font-size: 3em;
+
+ h2{
+    font-size: 1rem;
+    margin-bottom: 5px;
     text-align: center;
-    margin: auto;
-    margin-bottom: 15px;
-    padding: 4px 13px 4px 13px;
-    background-color: white;
-    color: rgb(28, 28, 61);
+    color: antiquewhite;
+
+} 
+
+.bulle {
+    border: solid rgb(72, 180, 207);
     border-radius: 10px;
+    background-color: rgb(142, 215, 233);
+    height: 50px;
+    width: 230px;
+    margin: auto;
+    margin-top: 7px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-weight: bold;
 }
+
+/* 
+.boxed{
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: 10px;
+    
+}
+
+.flex{
+    display: flex;
+}
+
+.section{
+    padding: 100px 0;
+}
+
+.dark{
+    background: rgba(53, 116, 225, 0.589);
+    color: white;
+}
+.text-center{
+    text-align: center;
+}
+
+.w25{
+    width: 15px;
+    display: inline-block;
+    min-height: 15px;
+}
+.gap20{
+    gap: 10px;
+}
+
+.space-between{
+    justify-content: space-between;
+} */
