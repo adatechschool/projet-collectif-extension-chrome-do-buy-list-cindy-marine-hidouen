@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Créer un nouvel élément de liste
             let newItem = document.createElement('div');
             newItem.className = "bulle";
-            newItem.textContent = `<p>${itemName}<br>${itemPrice}</p><p>🗑️</p>`
+            newItem.innerHTML = '<p>' + itemName + '<br>' + itemPrice + ' €</p><p>🗑️</p>'
             // Ajouter l'élément à la liste
             shoppingList.appendChild(newItem);
             // Effacer le champ de texte
