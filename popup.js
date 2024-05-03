@@ -1,51 +1,49 @@
-let element = ["Objet", "Prix", "Option"];
-
 // se lance au chargement de l'extension (ouverture du navigateur)
 document.addEventListener('DOMContentLoaded', function() {
-    let addItemButton = document.getElementById('addTargetButton');
-    let newItemInput = document.getElementById('newTargetInput');
-    let newItemPriceInput = document.getElementById('newPriceInput');
+    let addItemButton = document.getElementById('addButton');
+    let validItemButton = document.getElementById('validButton');
+    let itemNameInput = document.getElementById('newNameInput');
+    let itemPriceInput = document.getElementById('newPriceInput');
     let shoppingList = document.getElementById('shoppingList');
     
     // Récupérer les tâches existantes depuis LocalStorage lors du chargement de la page
     let savedItems = JSON.parse(localStorage.getItem('items')) || [];
     
     // Afficher les tâches existantes dans la liste
-    // savedItems.forEach(function(itemText) {
+    // savedItems.forEach(function(itemName) {
     //     let item = document.createElement('li');
-    //     item.textContent = itemText;
+    //     item.textContent = itemName;
     //     shoppingList.appendChild(item);
     // });
     
-    let add = document.getElementById('add');
-    add.addEventListener('click', function() {
-        let champs = document.getElementById('champs');
-        if (champs.style.display === 'none') {
-            champs.style.display = 'block';
+    let addButton = document.getElementById('addButton');
+    addButton.addEventListener('click', function() {
+        let fields = document.getElementById('champs');
+        if (fields.style.display === 'none') {
+            fields.style.display = 'block';
         } else {
-            champs.style.display = 'none';
+            fields.style.display = 'none';
         }
        
 
     });
-    // se lance au click sur le "V"
-    addItemButton.addEventListener('click', function() {
-        let itemText = newItemInput.value.trim();
-        let itemPrice = newItemPriceInput.value.trim();
-        
-        if (itemText !== '' || itemPrice !== '') {
+    // se lance au click sur le "✅"
+    validItemButton.addEventListener('click', function() {
+        let itemName = itemNameInput.value.trim();
+        let itemPrice = itemPriceInput.value.trim();
+        if (itemName !== '' && itemPrice !== '') {
             // Créer un nouvel élément de liste
-            let newTaskItem = document.createElement('li');
-            newTaskItem.textContent = itemText;
-            newTaskItem.textContent = itemPrice;
+            let newItem = document.createElement('div');
+            newItem.className = "bulle";
+            newItem.textContent = `<p>${itemName}<br>${itemPrice}</p><p>🗑️</p>`
             // Ajouter l'élément à la liste
-            shoppingList.appendChild(newTaskItem);
+            shoppingList.appendChild(newItem);
             // Effacer le champ de texte
-            newItemInput.value = '' 
-            newItemPriceInput.value = '';
+            itemNameInput.value = '' 
+            itemPriceInput.value = '';
             
             // Ajouter le nouvel element a la liste d'achats enregistrés dans LocalStorage
-            savedItems.push(itemText, itemPrice);
+            savedItems.push([itemName, itemPrice]);
             localStorage.setItem('items', JSON.stringify(savedItems
             ));
         }

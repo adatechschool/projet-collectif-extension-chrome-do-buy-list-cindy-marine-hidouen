@@ -1,17 +1,20 @@
  h1,p{
     text-align:center
 }
+
 h1 {
     font-weight: bold;
     color: whitesmoke;
 }
+
 p{
     margin-bottom: 15px;
     color: white;
     padding-right: 15px;
     padding-left: 15px;
-
+    
 }
+
 body {
     background-color: rgb(28, 28, 61);
     width: 350px;
@@ -31,15 +34,21 @@ main {
     background-color: white;
     color: rgb(28, 28, 61);
     border-radius: 10px;
-} 
+}
+
 .add:hover {
-    background-color: rgb(72, 180, 207);
+    background-color: rgb(142, 215, 233);
     color: white;
-    cursor: grab;
+    cursor: pointer;
 }
 
 .champs {
-    display: none;
+    text-align: center;
+}
+
+.input {
+    margin-top: 5px;
+    font-size: 1.25em;
 }
 
 .valid {
@@ -50,9 +59,10 @@ main {
     margin-bottom: 10px;
     padding: auto;
     border: none;
+    margin-top: 12px;
 } 
 .valid:hover {
-    cursor: grab;
+    cursor: pointer;
 }
 
 .liste {
@@ -64,12 +74,12 @@ main {
     width: 250px;
 }
 
- h2{
+h2{
     font-size: 1rem;
     margin-bottom: 5px;
     text-align: center;
     color: antiquewhite;
-
+    
 } 
 
 .bulle {
@@ -85,40 +95,3 @@ main {
     color: white;
     font-weight: bold;
 }
-
-/* 
-.boxed{
-    max-width: 1280px;
-    margin-inline: auto;
-    padding: 10px;
-    
-}
-
-.flex{
-    display: flex;
-}
-
-.section{
-    padding: 100px 0;
-}
-
-.dark{
-    background: rgba(53, 116, 225, 0.589);
-    color: white;
-}
-.text-center{
-    text-align: center;
-}
-
-.w25{
-    width: 15px;
-    display: inline-block;
-    min-height: 15px;
-}
-.gap20{
-    gap: 10px;
-}
-
-.space-between{
-    justify-content: space-between;
-} */
