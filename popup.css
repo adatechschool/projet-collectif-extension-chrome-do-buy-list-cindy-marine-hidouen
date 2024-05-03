@@ -80,6 +80,14 @@ h2{
     background-color: rgb(62, 62, 121);
     height: 240px;
     width: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-list {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
 
@@ -96,4 +104,18 @@ h2{
     align-items: center;
     color: white;
     font-weight: bold;
+}
+
+.previous {
+    position: absolute;
+    top: 0;
+    left: 95%;
+    transform: translateX(-50%);
+}
+
+.next {
+    position: absolute;
+    bottom: 0;
+    left: 95%;
+    transform: translateX(-50%);
 }
