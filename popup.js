@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let savedItems = JSON.parse(localStorage.getItem('items')) || [];
     
     // Afficher les elements deja enregistre dans la liste
-    savedItems.forEach(function(item) {
-        createBubble(item);
-    });
-    
+    for (let i = 0; i < savedItems.length; i++) {
+        createBubble(savedItems[i]);
+    }
+
     addButton.addEventListener('click', function() {
         let fields = document.getElementById('champs');
         if (fields.style.display === 'none') {
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (newItem.name !== '' && newItem.price !== '' && !isNaN(newItem.price)) {
             createBubble(newItem);
             // Effacer le champ de texte
-            // itemNameInput.value = '' 
-            // itemPriceInput.value = '';
+            itemNameInput.value = '' 
+            itemPriceInput.value = '';
             // Ajouter le nouvel element a la liste d'achats enregistrés dans LocalStorage
             savedItems.push(newItem);
             localStorage.setItem('items', JSON.stringify(savedItems
