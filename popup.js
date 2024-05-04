@@ -47,4 +47,9 @@ function createBubble(item) {
     newBubble.className = "bulle";
     newBubble.innerHTML = '<p>' + item.name + '<br>' + item.price + ' €</p><p>🗑️</p>';
     shoppingList.appendChild(newBubble);
+
+    setTimeout( () => {     // adapte la taille des bulles au contenu
+        let heightContainer = newBubble.clientHeight
+        newBubble.style.height = heightContainer + 'px'
+    }, 0)
 }

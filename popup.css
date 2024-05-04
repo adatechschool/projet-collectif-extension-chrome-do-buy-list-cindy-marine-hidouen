@@ -87,16 +87,18 @@ h2{
 .slider-list {
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
+    /* transition: transform 0.3s ease; */      /* N'est plus nécessaire si on n'utilise pas les buttons previous et next */
+    height: 240px;
+    overflow-y: scroll;     /* Affiche une barre défilante verticale */
+    scrollbar-width: none;  /* Rend cette barre invisible */
 }
-
 
 .bulle {
     border: solid rgb(72, 180, 207);
     border-radius: 10px;
     background-color: rgb(142, 215, 233);
-    height: 50px;
-    width: 230px;
+    /* min-height: 50px; */         /* A supprimer depuis la création de la clientHeight dans le Js */
+    width: 240px;
     margin: auto;
     margin-top: 7px;
     display: flex;
@@ -106,7 +108,7 @@ h2{
     font-weight: bold;
 }
 
-.previous {
+/* .previous {
     position: absolute;
     top: 0;
     left: 95%;
@@ -118,4 +120,4 @@ h2{
     bottom: 0;
     left: 95%;
     transform: translateX(-50%);
-}
+} */
