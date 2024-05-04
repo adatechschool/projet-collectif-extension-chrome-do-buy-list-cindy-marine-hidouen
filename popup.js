@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let i = 0; i < savedItems.length; i++) {
         createBubble(savedItems[i]);
     }
-
+    
     addButton.addEventListener('click', function() {
         let fields = document.getElementById('champs');
         if (fields.style.display === 'none') {
@@ -27,17 +27,25 @@ document.addEventListener('DOMContentLoaded', function() {
     validItemButton.addEventListener('click', function() {
         let newItem = {
             name: itemNameInput.value,
-            price: parseInt(itemPriceInput.value)
+            price: parseInt(itemPriceInput.value),
+            url: ""
         };
         if (newItem.name !== '' && newItem.price !== '' && !isNaN(newItem.price)) {
-            createBubble(newItem);
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                let activeTab = tabs[0];
+                newItem.url = activeTab.url;
+                createBubble(newItem);
+                savedItems.push(newItem);
+                localStorage.setItem('items', JSON.stringify(savedItems));
+                itemNameInput.value = '';
+                itemPriceInput.value = '';
+                // setTimeout( () => {     // adapte la taille des bulles au contenu
+                //     let heightContainer = newBubble.clientHeight
+                //     newBubble.style.height = heightContainer + 'px'
+                // }, 0)
+            });
             // Effacer le champ de texte
-            itemNameInput.value = '' 
-            itemPriceInput.value = '';
             // Ajouter le nouvel element a la liste d'achats enregistrés dans LocalStorage
-            savedItems.push(newItem);
-            localStorage.setItem('items', JSON.stringify(savedItems
-            ));
         }
     });
 });
@@ -45,11 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function createBubble(item) {
     let newBubble = document.createElement('div');
     newBubble.className = "bulle";
-    newBubble.innerHTML = '<p>' + item.name + '<br>' + item.price + ' €</p><p>🗑️</p>';
+    newBubble.innerHTML = '<p><a target="_blank" href="' + item.url + '">' + item.name + '</a><br>' + item.price + ' €</p><p>🗑️</p>';
     shoppingList.appendChild(newBubble);
-
-    setTimeout( () => {     // adapte la taille des bulles au contenu
-        let heightContainer = newBubble.clientHeight
-        newBubble.style.height = heightContainer + 'px'
-    }, 0)
 }
