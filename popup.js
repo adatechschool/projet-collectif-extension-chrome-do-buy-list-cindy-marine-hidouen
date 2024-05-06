@@ -6,14 +6,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let itemPriceInput = document.getElementById('newPriceInput');
     let shoppingList = document.getElementById('shoppingList');
     
-    // Récupérer les tâches existantes depuis LocalStorage lors du chargement de la page
-    let savedItems = JSON.parse(localStorage.getItem('items')) || [];
+    // Récupérer la précédente shoppingList (s'il y a) depuis LocalStorage lors du chargement de l'extension
+    let saved = JSON.parse(localStorage.getItem('localStoredItems')) || []
+    // Conversion en tableau
+    let savedItems = Array.from(saved)
     
-    // Afficher les elements deja enregistre dans la liste
+    // Afficher les éléments déjà enregistrés dans la liste
     for (let i = 0; i < savedItems.length; i++) {
-        createBubble(savedItems[i]);
+        createBubble(savedItems[i], savedItems);
     }
     
+    // Affichage des champs lors du clic sur le "➕"
     addButton.addEventListener('click', function() {
         let fields = document.getElementById('champs');
         if (fields.style.display === 'none') {
@@ -30,29 +33,38 @@ document.addEventListener('DOMContentLoaded', function() {
             price: parseInt(itemPriceInput.value),
             url: ""
         };
-        if (newItem.name !== '' && newItem.price !== '' && !isNaN(newItem.price)) {
+        if (newItem.name !== '' && (!newItem.price || (newItem.price !== '' && !isNaN(newItem.price)))) {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 let activeTab = tabs[0];
                 newItem.url = activeTab.url;
-                createBubble(newItem);
+                createBubble(newItem, savedItems);
                 savedItems.push(newItem);
-                localStorage.setItem('items', JSON.stringify(savedItems));
+                // Ajouter le nouvel element a la liste d'achats enregistrés dans LocalStorage
+                localStorage.setItem('localStoredItems', JSON.stringify(savedItems));
+                // Effacer le champ de texte
                 itemNameInput.value = '';
                 itemPriceInput.value = '';
-                // setTimeout( () => {     // adapte la taille des bulles au contenu
-                //     let heightContainer = newBubble.clientHeight
-                //     newBubble.style.height = heightContainer + 'px'
-                // }, 0)
             });
-            // Effacer le champ de texte
-            // Ajouter le nouvel element a la liste d'achats enregistrés dans LocalStorage
         }
     });
 });
 
-function createBubble(item) {
+
+function createBubble(item, bob) {
     let newBubble = document.createElement('div');
     newBubble.className = "bulle";
-    newBubble.innerHTML = '<p><a target="_blank" href="' + item.url + '">' + item.name + '</a><br>' + item.price + ' €</p><p>🗑️</p>';
+    if(!item.price) {
+        newBubble.innerHTML = '<p><a target="_blank" href="' + item.url + '">' + item.name + '</a><br></p><p><button class="deleteButton">🗑️</button></p>';
+    } else {
+        newBubble.innerHTML = '<p><a target="_blank" href="' + item.url + '">' + item.name + '</a><br>' + item.price + ' €</p><p><button class="deleteButton">🗑️</button></p>';
+    }
     shoppingList.appendChild(newBubble);
+    let deleteButton = newBubble.querySelector('.deleteButton')
+    // Permet de supprimer la bulle et le stockage de l'élément associé au clic de chacune des 🗑️
+    deleteButton.addEventListener('click', function () {
+        shoppingList.removeChild(newBubble)
+        bob.splice(bob.findIndex(savedItem => savedItem.name === item.name), 1)
+        console.log(bob)
+        localStorage.setItem('localStoredItems', JSON.stringify(bob))
+    })
 }

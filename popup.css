@@ -97,7 +97,7 @@ h2{
     border: solid rgb(72, 180, 207);
     border-radius: 10px;
     background-color: rgb(142, 215, 233);
-    height: 50px;  /* A supprimer depuis la création de la clientHeight dans le Js */
+    /*height: 50px;*/  /* A supprimer depuis la création de la clientHeight dans le Js */
     width: 240px;
     margin: auto;
     margin-top: 7px;
@@ -106,6 +106,20 @@ h2{
     align-items: center;
     color: white;
     font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+.deleteButton {
+    padding: auto;
+    background-color: rgb(142, 215, 233);
+    border: none;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
 }
 
 /* .previous {
