@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let i = 0; i < savedItems.length; i++) {
         createBubble(savedItems[i], savedItems);
     }
+
+    affichageTotal(savedItems)
     
     // Affichage des champs lors du clic sur le "➕"
     addButton.addEventListener('click', function() {
@@ -30,10 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
     validItemButton.addEventListener('click', function() {
         let newItem = {
             name: itemNameInput.value,
-            price: parseInt(itemPriceInput.value),
+            price: itemPriceInput.value,
             url: ""
         };
-        if (newItem.name !== '' && (!newItem.price || (newItem.price !== '' && !isNaN(newItem.price)))) {
+        newItem.price = newItem.price.replace(/,/g, '.')
+        if (!isNaN(newItem.price)) {
+            newItem.price = parseFloat(newItem.price)
+        }
+        if (newItem.name !== '' && (!newItem.price || (newItem.price !== '' && newItem.price >= 0))) {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 let activeTab = tabs[0];
                 newItem.url = activeTab.url;
@@ -44,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Effacer le champ de texte
                 itemNameInput.value = '';
                 itemPriceInput.value = '';
+                affichageTotal(savedItems)
             });
         }
     });
@@ -66,5 +73,23 @@ function createBubble(item, bob) {
         bob.splice(bob.findIndex(savedItem => savedItem.name === item.name), 1)
         console.log(bob)
         localStorage.setItem('localStoredItems', JSON.stringify(bob))
+        affichageTotal(bob)
     })
+}
+
+function totalCalculate (priceArray) {
+    let total = 0
+
+    for (let i = 0; i < priceArray.length; i++) {
+        if (isNaN(priceArray[i].price)) {
+            priceArray[i].price = 0
+        }
+        total += priceArray[i].price
+    }
+    return total
+}
+
+function affichageTotal (priceArray) {
+    let total = totalCalculate(priceArray)
+    document.getElementById('Total').innerHTML = total + ' €'
 }

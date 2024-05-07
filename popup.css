@@ -99,7 +99,8 @@ h2{
     background-color: rgb(142, 215, 233);
     /*height: 50px;*/  /* A supprimer depuis la création de la clientHeight dans le Js */
     width: 240px;
-    margin: auto;
+    margin-right: 3px;
+    margin-left: 3px;
     margin-top: 7px;
     display: flex;
     justify-content: space-between;
@@ -120,6 +121,24 @@ a {
 
 .deleteButton:hover {
     cursor: pointer;
+}
+
+.total {
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 90px;
+    margin-left: 36%;
+    text-align: center;
+    background-color: none;
+    position: fixed;
+    bottom: 30px;
+    font-size: 1.2em;
+}
+
+.total p {
+    color: orangered;
+    font-weight: bold;
 }
 
 /* .previous {
