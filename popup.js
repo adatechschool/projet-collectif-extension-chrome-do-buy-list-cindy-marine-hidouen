@@ -68,7 +68,7 @@ function createBubble(item, bob) {
     if(!item.price) {
         newBubble.innerHTML = '<p><a target="_blank" href="' + item.url + '">' + item.name + '</a><br></p><p><button class="deleteButton">🗑️</button></p>';
     } else {
-        newBubble.innerHTML = '<p><a target="_blank" href="' + item.url + '">' + item.name + '</a><br>' + item.price + ' €</p><p><button class="deleteButton">🗑️</button></p>';
+        newBubble.innerHTML = '<p><a target="_blank" href="' + item.url + '">' + item.name + '</a><br>' + item.price + ' €</p><p><button class="modifyButton">✏️</button> <button class="deleteButton">🗑️</button></p>';
     }
     shoppingList.appendChild(newBubble);
     let deleteButton = newBubble.querySelector('.deleteButton')

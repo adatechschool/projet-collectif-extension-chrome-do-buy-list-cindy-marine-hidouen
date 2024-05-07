@@ -121,6 +121,10 @@ a {
     color: blue;
 }
 
+a:hover {
+    font-size: 1.1em;
+}
+
 a:visited {
     text-decoration: none;
     color: blue;
@@ -133,6 +137,15 @@ a:visited {
 }
 
 .deleteButton:hover {
+    cursor: pointer;
+}
+
+.modifyButton {
+    background-color: rgb(142, 215, 233);
+    border: none;
+}
+
+.modifyButton:hover {
     cursor: pointer;
 }
 
