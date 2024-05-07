@@ -16,7 +16,7 @@ p{
 }
 
 body {
-    background-color: rgb(28, 28, 61);
+    background-color: rgb(9, 9, 39);
     width: 350px;
     height: 575px;
 } 
@@ -32,7 +32,7 @@ main {
     margin-bottom: 10px;
     padding: 4px 13px 4px 13px;
     background-color: white;
-    color: rgb(28, 28, 61);
+    color: rgb(9, 9, 39);
     border-radius: 10px;
 }
 
@@ -52,7 +52,7 @@ main {
 }
 
 .valid {
-    background-color: rgb(28, 28, 61);
+    background-color: rgb(9, 9, 39);
     font-size: 2em;
     text-align: center;
     margin: auto;
@@ -66,11 +66,11 @@ main {
 }
 
 h2{
-    font-size: 1rem;
-    margin-top: 1em;
+    font-size: 0.9rem;
+    margin-top: 0.6em;
     margin-bottom: 5px;
     text-align: center;
-    color: antiquewhite;
+    color: white;
 } 
 
 .liste {
@@ -78,8 +78,8 @@ h2{
     border: solid rgb(62, 62, 121);
     border-radius: 10px;
     background-color: rgb(62, 62, 121);
-    height: 240px;
-    width: 250px;
+    height: 270px;
+    width: 300px;
     overflow: hidden;
     position: relative;
 }
@@ -88,7 +88,7 @@ h2{
     display: flex;
     flex-direction: column;
     /* transition: transform 0.3s ease; */      /* N'est plus nécessaire si on n'utilise pas les buttons previous et next */
-    height: 240px;
+    height: 270px;
     overflow-y: scroll;     /* Affiche une barre défilante verticale */
     scrollbar-width: none;  /* Rend cette barre invisible */
 }
@@ -98,7 +98,7 @@ h2{
     border-radius: 10px;
     background-color: rgb(142, 215, 233);
     /*height: 50px;*/  /* A supprimer depuis la création de la clientHeight dans le Js */
-    width: 240px;
+    width: 290px;
     margin-right: 3px;
     margin-left: 3px;
     margin-top: 7px;
@@ -109,8 +109,18 @@ h2{
     font-weight: bold;
 }
 
+.bulle p{
+    text-align: left;
+}
+
 a {
     text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    text-decoration: none;
+    color: blue;
 }
 
 .deleteButton {
@@ -127,17 +137,17 @@ a {
     border: none;
     border-radius: 10px;
     height: 50px;
-    width: 90px;
-    margin-left: 36%;
+    width: 190px;
+    margin-left: 21.5%;
     text-align: center;
     background-color: none;
     position: fixed;
-    bottom: 30px;
+    bottom: 40px;
     font-size: 1.2em;
 }
 
 .total p {
-    color: orangered;
+    color: white;
     font-weight: bold;
 }
 
