@@ -4,10 +4,10 @@
     "version": "1.0",
     "description": "Ajouter vos coups de coeur a votre liste d'achat ",
     "icons": {
-        "16": "images/icon-16.png",
-        "32": "images/icon-32.png",
-        "48": "images/icon-48.png",
-        "128": "images/icon-128.png"
+        "16": "images/icon1-16.png",
+        "32": "images/icon1-32.png",
+        "48": "images/icon1-48.png",
+        "128": "images/icon1-128.png"
         
     },
     "action": {
